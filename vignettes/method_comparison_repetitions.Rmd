@@ -1,0 +1,57 @@
+---
+title: "Method comparison and repetitions "
+author: "Leonard Dubois"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{analysis_overview}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+
+```{r setup, message=FALSE, warning=FALSE, results='hide'}
+rm(list = ls())
+library(metaDAF)
+library(tidyverse)
+data("QinJ_2012_metadata")
+data("QinJ_2012_table_count")
+load("../R/sysdata.rda")
+```
+
+## Repetitions
+
+Here is the same analysis repeated several times : 
+
+```{r example2, message=FALSE, warning=FALSE, results='hide'}
+dataTest_double <- generate_repeated_DAF_data(times = 5,
+                                              count_table = QinJ_2012_table_count,
+                                              metadata = QinJ_2012_metadata)
+res2 <- run_DAF_analysis(data = dataTest_double, method = "deseq2")
+plot_data2 <- generate_curve_data(dt = res2,
+                                 threshold_var = "adjusted_pvalue")
+curve_plot(curve_data = plot_data2, type = "roc",
+           plot_title = "Example of DESeq2 run - 5 times")
+
+```
+
+## Comparions of several methods
+
+Or if one want to compare multiple methods together : 
+
+```{r  message=FALSE, warning=FALSE, results='hide'}
+curve_plot(curve_data = res_test_compare_rep_plot_data, type = "roc",
+           plot_title = "Example of methods comparison")
+boxplot_AUC(curve_data = res_test_compare_rep_plot_data, auc_limit = 1)
+
+
+curve_plot(curve_data = res_test_compare_rep_plot_data, type = "roc",
+           plot_title = "Example of methods comparison") + coord_cartesian(xlim = c(0, 0.1))
+```

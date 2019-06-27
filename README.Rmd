@@ -1,0 +1,41 @@
+---
+title: "README"
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+
+rm(list = ls())
+library(devtools)
+library(tidyverse)
+devtools::load_all()
+load("R/sysdata.rda")
+```
+
+## TODO
+
+Overall improvement that are yet to be added :
+
+- Filter ROC curves and results based on the FC of the feature across groups 
+(results for low, med, high FC)
+- install packages with remotes::install_github()
+- Add details about method (stats, normalization...) in the roxygen (in fact add what was in the first methods.Rmd in the doc of the package)
+
+# metaDAF
+
+The goal of metaDAF is to wrap packages and functions for the statistical
+analysis of differentially abundant features. If data does not 
+already countain groups to compare, functions are provided to 
+generate artificial differences and thus benchmark methods included.
+
+## Installation
+
+see later

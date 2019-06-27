@@ -1,0 +1,39 @@
+template:
+  params:
+    bootswatch: yeti
+reference:
+- title: Handling data and simulation
+  contents:
+    - '`build_DAF_data`'
+    - '`generate_differences`'
+    - '`generate_repeated_DAF_data`'
+- title: Processing
+  contents:
+    - '`run_DAF_analysis`'
+    - '`select_process`'
+    - '`preprocess_DAF_data`'
+    - '`process_DESeq2`'
+    - '`process_metagenomeSeq`'
+    - '`process_ALDEx2`'
+    - '`process_edgeR`'
+    - '`process_mbzinb`'
+    - '`process_RAIDA`'
+    - '`process_ZIBseq`'
+    - '`process_voom`'
+    - '`process_wilcox`'
+- title: Output and display
+  contents:
+    - '`generate_curve_data`'
+    - '`curve_plot`'
+- title: Included datasets
+  contents:
+    - '`ZellerG_2014_metadata`'
+    - '`ZellerG_2014_table_count`'
+    - '`HMP_2012_metadata`'
+    - '`HMP_2012_table_count`'
+    - '`QinJ_2012_metadata`'
+    - '`QinJ_2012_table_count`'
+analysis_overview:
+  contents:
+    - simple_analysis_overview
+    - method_comparison_repetitions

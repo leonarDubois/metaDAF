@@ -1,0 +1,23 @@
+Package: metaDAF
+Type: Package
+Title: Metagenomics tools for detecting Differentially Abundant Features
+Version: 0.7.6
+Author: Leonard Dubois
+Maintainer: Leonard Dubois <leonard.dubois@inra.fr>
+Description: Countains a couple of example datasets (count tables and metadata)
+            as well as wrappers of packages and functions for the statistical
+            analysis of diffenrentially abundant features. If data does not 
+            already countain groups to compare, functions are provided to 
+            generate artificial differences and thus benchmark methods included.
+License: MIT
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 6.1.1
+Suggests:
+    DESeq2,
+    metagenomeSeq,
+    edgeR,
+    ALDEx2,
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr
