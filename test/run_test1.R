@@ -70,6 +70,9 @@ plot_data <- generate_curve_data(dt = res,
 curve_plot(curve_data = plot_data, type = "roc", plot_title = "ROC curve Comparison")
 curve_plot(curve_data = plot_data, type = "roc") + coord_cartesian(xlim = c(0,0.1))
 
+# and test rank feature
+boxplot_rank(rank_features(res, adjusted = FALSE), nmax = 10)
+
 # --------------------------------
 # Test comparisons AND repetitions
 # --------------------------------

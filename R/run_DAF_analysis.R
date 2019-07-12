@@ -55,6 +55,11 @@ run_DAF_analysis <- function(data, method = c("deseq2", "mbzinb", "zibseq",
                     suppressMessages( res <- process_fun(data, ...) )
                 }
                 colnames(res$curated) <- c("pvalue", "adjusted_pvalue")
+                #
+                # add the same line in all run types
+                res$curated$feat_name <- rownames(res$curated)
+                #
+                #
                 res$curated$true_DAF <- rownames(res$curated) %in% data$true_DAF
                 res$curated$method <- method
                 res$curated$run <- "run1"
@@ -91,6 +96,7 @@ run_DAF_compare <- function(data, method, verbose, ...) {
             res_tmp$curated$true_DAF <- rownames(res_tmp$curated) %in%
                 data$true_DAF
             res_tmp$curated$method <- m
+            res_tmp$curated$feat_name <- rownames(res_tmp$curated)
             res <- rbind(res, res_tmp$curated)
         }, silent = T)
         cat(" - Done \n")
@@ -121,6 +127,7 @@ run_DAF_repeat <- function(data, method, verbose, ...) {
                 data[[i]]$true_DAF
             res_tmp$curated$run <- paste0("run", as.character(i))
             res_tmp$curated$method <- method
+            res_tmp$curated$feat_name <- rownames(res_tmp$curated)
             res <- rbind(res, res_tmp$curated)
             cat(" - Done \n")
         }
@@ -159,6 +166,7 @@ run_DAF_repeat_compare <- function(data, method, verbose, ...) {
                     data[[i]]$true_DAF
                 res_tmp$curated$run <- paste0("run", as.character(i))
                 res_tmp$curated$method <- m
+                res_tmp$curated$feat_name <- rownames(res_tmp$curated)
                 res <- rbind(res, res_tmp$curated)
                 cat(" - Done \n")
             }

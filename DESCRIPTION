@@ -1,7 +1,7 @@
 Package: metaDAF
 Type: Package
 Title: Metagenomics tools for detecting Differentially Abundant Features
-Version: 0.7.6
+Version: 0.8
 Author: Leonard Dubois
 Maintainer: Leonard Dubois <leonard.dubois@inra.fr>
 Description: Countains a couple of example datasets (count tables and metadata)

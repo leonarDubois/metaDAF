@@ -20,14 +20,6 @@ devtools::load_all()
 load("R/sysdata.rda")
 ```
 
-## TODO
-
-Overall improvement that are yet to be added :
-
-- Filter ROC curves and results based on the FC of the feature across groups 
-(results for low, med, high FC)
-- install packages with remotes::install_github()
-- Add details about method (stats, normalization...) in the roxygen (in fact add what was in the first methods.Rmd in the doc of the package)
 
 # metaDAF
 
@@ -36,6 +28,3 @@ analysis of differentially abundant features. If data does not
 already countain groups to compare, functions are provided to 
 generate artificial differences and thus benchmark methods included.
 
-## Installation
-
-see later

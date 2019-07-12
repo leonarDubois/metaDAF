@@ -13,12 +13,12 @@ process_metagenomeSeq <- function(data, ... ) {
     }
     library(metagenomeSeq)
 
-    analysis <- newMRexperiment(counts = data$count_table,
+    analysis <- metagenomeSeq::newMRexperiment(counts = data$count_table,
                            phenoData = AnnotatedDataFrame(data$metadata))
 
     # Compute scaling factors for normalization
-    p <- cumNormStatFast(analysis)
-    scaling_fct <- cumNorm(analysis, p = p)
+    p <- metagenomeSeq::cumNormStatFast(analysis)
+    scaling_fct <- metagenomeSeq::cumNorm(analysis, p = p)
     pd <- pData(scaling_fct)
     mod_mat <- model.matrix(~ group, data = pd)
 
@@ -32,13 +32,13 @@ process_metagenomeSeq <- function(data, ... ) {
             mod_mat <- model.matrix(as.formula(paste("~ group", covar,
                                                      collapse = "+")),
                                     data = pd)
-            fit <- fitZig(scaling_fct, mod_mat)
+            fit <- metagenomeSeq::fitZig(scaling_fct, mod_mat)
 
     } else {
-        fit <- fitFeatureModel(scaling_fct, mod_mat)
+        fit <- metagenomeSeq::fitFeatureModel(scaling_fct, mod_mat)
     }
     # -----------------------------------------------------
-    raw_output <- MRcoefs(fit, number =  nrow(data$count_table) )
+    raw_output <- metagenomeSeq::MRcoefs(fit, number =  nrow(data$count_table))
     curated_output <- raw_output[, c("pvalues", "adjPvalues")]
     OUT <- list(raw = raw_output,
                curated = curated_output)
